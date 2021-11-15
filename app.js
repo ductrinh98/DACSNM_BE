@@ -1,5 +1,6 @@
 var express = require('express');
 require('dotenv').config();
+var cors = require('cors')
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -22,6 +23,7 @@ db.once('open', function () {
     console.log('database connected!')
 });
 
+app.use(cors());
 //use sessions for tracking logins
 app.use(session({
   secret: 'LeDucTrinh',
