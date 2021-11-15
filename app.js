@@ -35,7 +35,7 @@ db.once('open', function () {
     console.log('database connected!')
 });
 
-app.use(cors());
+// app.use(cors());
 //use sessions for tracking logins
 app.use(session({
   secret: 'LeDucTrinh',
