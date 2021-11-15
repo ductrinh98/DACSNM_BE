@@ -1,12 +1,22 @@
 var express = require('express');
 require('dotenv').config();
-var cors = require('cors')
+// const cors = require('cors');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-
+const cors = require('cors');
+const whitelist = ['http://localhost:3000'];
+const corsOptions = {
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin))
+      return callback(null, true)
+      callback(new Error('Not allowed by CORS'));
+  }
+}
+app.use(cors(corsOptions));
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
