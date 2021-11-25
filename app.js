@@ -33,6 +33,7 @@ app.use(function(req,res,next){
     res.header("Access-Control-Allow-Methods","PUT, POST, PATH, DELETE");
     return res.status(200).json({});
   }
+  next();
 });
 
 //use sessions for tracking logins
