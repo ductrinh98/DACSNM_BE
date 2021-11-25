@@ -50,13 +50,11 @@ router.post('/signin', function(req, res, next) {
             })
           } else {
             req.session.userId = user._id;
-            req.session.save();
             console.log(user)
             return res.status(200).json({
                 message: 'Đăng nhập thành công!',
                 id: user._id,
                 name: user.username,
-                user:user
             })
           }
         });
