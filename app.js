@@ -1,24 +1,11 @@
 var express = require('express');
 require('dotenv').config();
-// const cors = require('cors');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-// res.header("Access-Control-Allow-Origin", "http://localhost:4200");
-// res.header('Access-Control-Allow-Credentials', true);
-const cors = require('cors');
-// const whitelist = ['*'];
-// const corsOptions = {
-//   credentials: true, // This is important.
-//   origin: (origin, callback) => {
-//     if(whitelist.includes(origin))
-//       return callback(null, true)
-//       callback(new Error('Not allowed by CORS'));
-//   }
-// }
-// app.use(cors(corsOptions));
+
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -35,7 +22,11 @@ db.once('open', function () {
     console.log('database connected!')
 });
 
-app.use(cors());
+//fix cors
+app.use(function(req,res,next){
+  res.header('Access-Control-Allow-Origin','*')
+});
+
 //use sessions for tracking logins
 app.use(session({
   secret: 'LeDucTrinh',
