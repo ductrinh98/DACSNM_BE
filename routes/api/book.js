@@ -67,6 +67,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+  // console.log(req.session)
   if (req.session.userId) {
     console.log(req.body)
     Book.createbook(req.body, function(error, book) {

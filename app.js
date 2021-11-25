@@ -41,10 +41,11 @@ app.use(cors(corsOptions));
 app.use(session({
   secret: 'LeDucTrinh',
   resave: true,
-  saveUninitialized: false,
+  saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: db
-  })
+  }),
+  cookie: { secure: false }
 }));
 
 
