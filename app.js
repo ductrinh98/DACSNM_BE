@@ -24,7 +24,7 @@ db.once('open', function () {
 
 /* CROS middleware */
 const cors = require('cors');
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['*'];
 const corsOptions = {
   credentials: true, // This is important.
   origin: (origin, callback) => {
@@ -34,7 +34,6 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
   }
 }
-
 app.use(cors(corsOptions));
 
 //use sessions for tracking logins
