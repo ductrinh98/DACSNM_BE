@@ -29,11 +29,11 @@ app.use(session({
   store: new MongoStore({
     mongooseConnection: db
   }),
-  // cookie: {
-  //   httpOnly:true,
-  //   sameSite:'none',
-  //   secure: true
-  // }
+  cookie: {
+    // httpOnly:true,
+    sameSite:'none',
+    secure: true
+  }
 }));
 
 /* CROS middleware */
