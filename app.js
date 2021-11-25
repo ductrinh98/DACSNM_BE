@@ -24,7 +24,15 @@ db.once('open', function () {
 
 //fix cors
 app.use(function(req,res,next){
-  res.header('Access-Control-Allow-Origin','*')
+  res.header("Access-Control-Allow-Origin","*");
+  res.header(
+    "Acces-Control-Allow-Headers",
+    "Origin, X-Request-With, Content-Type, Accept, Autthorization"
+  )
+  if(req.method ==='OPTIÓN'){
+    res.header("Access-Control-Allow-Methods","PUT, POST, PATH, DELETE");
+    return res.status(200).json({});
+  }
 });
 
 //use sessions for tracking logins
@@ -36,6 +44,7 @@ app.use(session({
     mongooseConnection: db
   })
 }));
+
 
 // parse incoming requests
 app.use(bodyParser.json());
