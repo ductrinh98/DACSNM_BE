@@ -31,7 +31,7 @@ app.use(session({
   }),
   cookie: {
     httpOnly:true,
-    SameSite:none,
+    SameSite:None,
     Secure
   }
 }));
