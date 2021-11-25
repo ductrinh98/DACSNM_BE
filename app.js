@@ -40,7 +40,7 @@ app.use(cors(corsOptions));
 //use sessions for tracking logins
 app.use(session({
   secret: 'LeDucTrinh',
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   store: new MongoStore({
     mongooseConnection: db
