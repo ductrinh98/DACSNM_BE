@@ -105,6 +105,7 @@ router.delete('/:id', function (req, res, next) {
     });
   } else {
     return res.status(401).json({
+      req: req.session,
       message: 'Bạn cần đăng nhập!',
     })
   }
