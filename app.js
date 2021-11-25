@@ -9,7 +9,7 @@ var MongoStore = require('connect-mongo')(session);
 // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
 // res.header('Access-Control-Allow-Credentials', true);
 const cors = require('cors');
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['*'];
 const corsOptions = {
   credentials: true, // This is important.
   origin: (origin, callback) => {
