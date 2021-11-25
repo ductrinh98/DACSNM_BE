@@ -23,7 +23,7 @@ db.once('open', function () {
 });
 
 //fix cors
-app.use(function(req,res,next){
+app.use((req,res,next)=> {
   res.header("Access-Control-Allow-Origin","*");
   res.header(
     "Acces-Control-Allow-Headers",
