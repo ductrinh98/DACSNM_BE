@@ -9,16 +9,16 @@ var MongoStore = require('connect-mongo')(session);
 // res.header("Access-Control-Allow-Origin", "http://localhost:4200");
 // res.header('Access-Control-Allow-Credentials', true);
 const cors = require('cors');
-const whitelist = ['*'];
-const corsOptions = {
-  credentials: true, // This is important.
-  origin: (origin, callback) => {
-    if(whitelist.includes(origin))
-      return callback(null, true)
-      callback(new Error('Not allowed by CORS'));
-  }
-}
-app.use(cors(corsOptions));
+// const whitelist = ['*'];
+// const corsOptions = {
+//   credentials: true, // This is important.
+//   origin: (origin, callback) => {
+//     if(whitelist.includes(origin))
+//       return callback(null, true)
+//       callback(new Error('Not allowed by CORS'));
+//   }
+// }
+// app.use(cors(corsOptions));
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -35,7 +35,7 @@ db.once('open', function () {
     console.log('database connected!')
 });
 
-// app.use(cors());
+app.use(cors());
 //use sessions for tracking logins
 app.use(session({
   secret: 'LeDucTrinh',
@@ -72,7 +72,7 @@ app.use(function (err, req, res, next) {
   res.send(err.message);
 });
 
-port = process.env.PORT||3001
+port = process.env.PORT||8080
 // listen on port 3000
 app.listen(port, function () {
   console.log(`Express app listening on port ${port}`);
