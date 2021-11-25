@@ -55,6 +55,7 @@ router.post('/signin', function(req, res, next) {
                 message: 'Đăng nhập thành công!',
                 id: user._id,
                 name: user.username,
+                user:user
             })
           }
         });
