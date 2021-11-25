@@ -29,7 +29,7 @@ app.use(function(req,res,next){
     "Acces-Control-Allow-Headers",
     "Origin, X-Request-With, Content-Type, Accept, Autthorization"
   )
-  if(req.method ==='OPTIÓN'){
+  if(req.method ==='OPTIONS'){
     res.header("Access-Control-Allow-Methods","PUT, POST, PATH, DELETE");
     return res.status(200).json({});
   }
