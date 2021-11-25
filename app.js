@@ -21,6 +21,15 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log('database connected!')
 });
+//use sessions for tracking logins
+app.use(session({
+  secret: 'LeDucTrinh',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  }),
+}));
 
 /* CROS middleware */
 const cors = require('cors');
@@ -35,17 +44,6 @@ const corsOptions = {
   }
 }
 app.use(cors(corsOptions));
-
-//use sessions for tracking logins
-app.use(session({
-  secret: 'LeDucTrinh',
-  resave: true,
-  saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
-  }),
-}));
-
 
 // parse incoming requests
 app.use(bodyParser.json());
