@@ -26,7 +26,7 @@ db.once('open', function () {
 app.use((req,res,next)=> {
   res.header("Access-Control-Allow-Origin","*");
   res.header(
-    "Acces-Control-Allow-Headers",
+    "Access-Control-Allow-Headers",
     "Origin, X-Request-With, Content-Type, Accept, Authorization"
   )
   if(req.method ==='OPTIONS'){
