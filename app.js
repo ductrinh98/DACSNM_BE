@@ -24,7 +24,7 @@ db.once('open', function () {
 
 /* CROS middleware */
 const cors = require('cors');
-const whitelist = ['*'];
+const whitelist = ['http://localhost:3000'];
 const corsOptions = {
   credentials: true, // This is important.
   origin: (origin, callback) => {
