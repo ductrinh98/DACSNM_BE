@@ -32,7 +32,8 @@ app.use(session({
   cookie: {
     domain: 'download-book.herokuapp.com',
     httpOnly:true,
-    secure: false
+    sameSite: 'None',
+    secure: true
   }
 }));
 
@@ -60,6 +61,7 @@ app.use(express.static(__dirname + '/public'));
 
 // include routes
 var routes = require('./routes');
+const { setNonEnumerableProperties } = require('got/dist/source');
 app.use(routes);
 
 // catch 404 and forward to error handler
