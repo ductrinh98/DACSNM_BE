@@ -54,8 +54,7 @@ router.post('/signin', function(req, res, next) {
             return res.status(200).json({
                 message: 'Đăng nhập thành công!',
                 id: user._id,
-                name: user.username,
-                session: res.session
+                name: user.username
             })
           }
         });
