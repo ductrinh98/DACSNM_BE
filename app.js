@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
-
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -21,6 +20,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
     console.log('database connected!')
 });
+
 //use sessions for tracking logins
 app.use(session({
   secret: 'LeDucTrinh',
@@ -28,27 +28,22 @@ app.use(session({
   saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: db
-  }),
-  cookie: {
-    // httpOnly:true,
-    sameSite:'none',
-    secure: true
-  }
+  })
 }));
 
 /* CROS middleware */
 const cors = require('cors');
-const whitelist = ['http://localhost:3000'];
-const corsOptions = {
-  credentials: true, // This is important.
-  origin: (origin, callback) => {
-    if(whitelist.includes(origin))
-      return callback(null, true)
+// const whitelist = ['http://localhost:3000'];
+// const corsOptions = {
+//   credentials: true, // This is important.
+//   origin: (origin, callback) => {
+//     if(whitelist.includes(origin))
+//       return callback(null, true)
 
-      callback(new Error('Not allowed by CORS'));
-  }
-}
-app.use(cors(corsOptions));
+//       callback(new Error('Not allowed by CORS'));
+//   }
+// }
+app.use(cors());
 
 // parse incoming requests
 app.use(bodyParser.json());
@@ -76,8 +71,8 @@ app.use(function (err, req, res, next) {
   res.send(err.message);
 });
 
-port = process.env.PORT||8080
+
 // listen on port 3000
-app.listen(port, function () {
-  console.log(`Express app listening on port ${port}`);
-});
+app.listen(3001, function () {
+  console.log('Express app listening on port 3001');
+}); 
