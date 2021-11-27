@@ -33,7 +33,7 @@ app.use(session({
     domain: 'download-book.herokuapp.com',
     httpOnly:true,
     sameSite: 'Strict',
-    secure: true
+    // secure: true
   }
 }));
 
