@@ -48,7 +48,7 @@ const corsOptions = {
       callback(new Error('Not allowed by CORS'));
   }
 }
-app.use(cors());
+app.use(cors(corsOptions));
 
 // parse incoming requests
 app.use(bodyParser.json());
