@@ -32,7 +32,7 @@ app.use(session({
   cookie: {
     domain: 'download-book.herokuapp.com',
     httpOnly:true,
-    sameSite: 'None',
+    sameSite: 'Strict',
     secure: true
   }
 }));
