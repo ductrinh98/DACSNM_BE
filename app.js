@@ -28,21 +28,26 @@ app.use(session({
   saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: db
-  })
+  }),
+  cookie: {
+    domain: 'download-book.herokuapp.com',
+    httpOnly:true,
+    secure: false
+  }
 }));
 
 /* CROS middleware */
 const cors = require('cors');
-// const whitelist = ['http://localhost:3000'];
-// const corsOptions = {
-//   credentials: true, // This is important.
-//   origin: (origin, callback) => {
-//     if(whitelist.includes(origin))
-//       return callback(null, true)
+const whitelist = ['http://localhost:3000'];
+const corsOptions = {
+  credentials: true, // This is important.
+  origin: (origin, callback) => {
+    if(whitelist.includes(origin))
+      return callback(null, true)
 
-//       callback(new Error('Not allowed by CORS'));
-//   }
-// }
+      callback(new Error('Not allowed by CORS'));
+  }
+}
 app.use(cors());
 
 // parse incoming requests
@@ -73,7 +78,7 @@ app.use(function (err, req, res, next) {
 
 
 // listen on port 3000
-port = process.env.PORT
+port = process.env.PORT||8080
 app.listen(port, function () {
   console.log(`Express app listening on port ${port}`);
 }); 
