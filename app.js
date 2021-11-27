@@ -39,7 +39,7 @@ app.use(session({
 
 /* CROS middleware */
 const cors = require('cors');
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['http://localhost:3000','https://downloadbook-fe.herokuapp.com/'];
 const corsOptions = {
   credentials: true, // This is important.
   origin: (origin, callback) => {
